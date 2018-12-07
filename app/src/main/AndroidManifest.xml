@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.example.cc.makepackage">
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="27"/>
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.FLASHLIGHT"/>
+    <uses-feature android:name="android.hardware.camera"/>
+    <uses-feature android:name="android.hardware.camera.autofocus"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/logo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <!--
+        在Activity启动模式为singleTask（唯一实例）的情况下，当启动Activity的时候，如果当前Activity不存在则实例化一个新的Activity，
+        如果当前Activity在任务栈中已经存在，则会复用这个Activity实例，但这边我们从日志打印可以看出在启动第二个Activity的时候，
+        第一个Activity推出了任务栈，也就意味着当启动模式为singTask的时候，启动已经存在在Activity任务栈中但不在栈顶的Activity时，
+        该Activity会把压在它前面的所有Activity弹出任务栈，此时任务栈编号为1081，属于同一个任务栈。
+        在Activity启动模式为singleInstance的情况下，首先我们可以发现的是启动模式为singleInstance的Activity处于不同的任务栈（Task编号不同），
+        并保证不再有其他的Activity实例进入，它还是和singleTask一样保持唯一实例，然后它的退出顺序是不再是根据调用顺序，
+        而是在不同的任务栈中，从上往下退出。
+        -->
+
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleTask">
+
+        </activity>
+        <activity android:name=".bind">
+        </activity>
+
+        <service
+            android:name=".MyService"
+            android:enabled="true"
+            android:exported="true">
+        </service>
+
+        <activity android:name=".LGActivity">
+        </activity>
+        <activity android:name=".GDActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

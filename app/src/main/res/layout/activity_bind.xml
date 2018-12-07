@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+    <TextView
+        android:id="@+id/any_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="导轨型号"
+        android:gravity="center"
+        android:textSize="50sp"/>
+    <TextView
+        android:id="@+id/code_num"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:text="编码"
+        android:layout_marginTop="100dp"/>
+    <Button
+        android:id="@+id/bind"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="确定"
+        android:layout_marginTop="200dp"/>
+</RelativeLayout>
